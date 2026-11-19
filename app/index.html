@@ -3,20 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Sunset Cover Maker</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
+  <section class="controls" aria-label="Cover editor controls">
+    <h1>Sunset Cover Maker</h1>
+    <p class="tagline">Turn your photos into a bold sunset poster cover. Photos stay on your machine — nothing is uploaded.</p>
+
+    <fieldset>
+      <legend>Photos — up to 3</legend>
+      <div id="panels"></div>
+      <button id="fill-all" type="button">One photo fills all panels</button>
+      <p class="hint">Tip: drag a photo inside the cover to reposition it, or drop a file onto a panel card.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Layout</legend>
+      <div id="layout-btns" class="btn-row"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Caption</legend>
+      <label>Title <input id="title" type="text" maxlength="40" value="Sunset Heist"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="60" value="Vice City Nights"></label>
+      <div id="colour-btns" class="btn-row" aria-label="Title colour"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Colour grade</legend>
+      <div id="grade-btns" class="btn-row"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Size</legend>
+      <div id="size-btns" class="btn-row"></div>
+      <label class="check"><input id="decorations" type="checkbox" checked> Decorations (sun, palms, halftone, neon frame)</label>
+    </fieldset>
+
+    <button id="export" type="button" class="export">Export PNG</button>
     <p id="status" role="status"></p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
